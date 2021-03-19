@@ -8,9 +8,7 @@ exports.createSauce = (req, res, next) => {
     ...sauceObject,
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
     likes: '0',
-    dislikes: '0',
-	usersLiked: '[]',
-  	usersDisliked: '[]',
+    dislikes: '0'
   });
   sauce.save()
     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
