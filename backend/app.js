@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 const path = require('path');
+const helmet = require("helmet");
 
 mongoose.connect('mongodb+srv://simpleuser:dlcesldd@cluster0.wp2du.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -12,7 +13,7 @@ mongoose.connect('mongodb+srv://simpleuser:dlcesldd@cluster0.wp2du.mongodb.net/m
   .catch(() => console.log('Connexion à MongoDB échouée...'));
 
 const app = express();
-
+app.use(helmet());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
