@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -6,7 +7,7 @@ const userRoutes = require('./routes/user');
 const path = require('path');
 const helmet = require("helmet");
 
-mongoose.connect('mongodb+srv://simpleuser:dlcesldd@cluster0.wp2du.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.wp2du.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
